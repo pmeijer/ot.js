@@ -1,9 +1,9 @@
 /*
  *    /\
- *   /  \ ot 0.0.14
+ *   /  \ ot 0.0.15
  *  /    \ http://operational-transformation.github.com
  *  \    /
- *   \  / (c) 2012-2014 Tim Baumann <tim@timbaumann.info> (http://timbaumann.info)
+ *   \  / (c) 2012-2017 Tim Baumann <tim@timbaumann.info> (http://timbaumann.info)
  *    \/ ot may be freely distributed under the MIT license.
  */
 
@@ -864,6 +864,7 @@ ot.Client = (function (global) {
 
   Client.prototype.setState = function (state) {
     this.state = state;
+    this.state.logState(this);
   };
 
   // Call this method when the user changes the document.
@@ -933,6 +934,10 @@ ot.Client = (function (global) {
   // Nothing to do because the latest server state and client state are the same.
   Synchronized.prototype.transformSelection = function (x) { return x; };
 
+  Synchronized.prototype.logState = function (client) {
+    console.log('Synchronized at revision', client.revision);
+  };
+
   // Singleton
   var synchronized_ = new Synchronized();
 
@@ -981,6 +986,10 @@ ot.Client = (function (global) {
     // The confirm didn't come because the client was disconnected.
     // Now that it has reconnected, we resend the outstanding operation.
     client.sendOperation(client.revision, this.outstanding);
+  };
+
+  AwaitingConfirm.prototype.logState = function (client) {
+    console.log('AwaitingConfirm at revision', client.revision, '\noperation:', this.outstanding);
   };
 
 
@@ -1039,6 +1048,10 @@ ot.Client = (function (global) {
     // The confirm didn't come because the client was disconnected.
     // Now that it has reconnected, we resend the outstanding operation.
     client.sendOperation(client.revision, this.outstanding);
+  };
+
+  AwaitingWithBuffer.prototype.logState = function (client) {
+    console.log('AwaitingWithBuffer at revision', client.revision, '\noperation:', this.outstanding);
   };
 
 
