@@ -1,11 +1,10 @@
 {
-  "name": "ot",
-  "description": "Collaborative editing using operational transformation",
+  "name": "webgme-ot",
+  "description": "Modified version of https://github.com/operational-transformation/ot.js to fit into webgme framework",
   "keywords": [
     "operational transformation"
   ],
   "version": "0.0.15",
-  "author": "Tim Baumann <tim@timbaumann.info> (http://timbaumann.info)",
   "homepage": "http://operational-transformation.github.com",
   "repository": {
     "type": "git",

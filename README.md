@@ -1,3 +1,5 @@
+This is a modified version of https://github.com/Operational-Transformation/ot.js in order to fit in the webgme framework.
+
 * Documentation: http://operational-transformation.github.io/
 * Compatibility: Requires CodeMirror >= 4.0
 * Live demo: http://ot-demo.timbaumann.info/
